@@ -42,6 +42,19 @@ public class PiedraPepelTijeras {
         // Calcular el ganador de la jugada
         int resultado = usuarioGana(elecionPC, eleccionUsuario);
 
+        // Mostrar el resultado de la jugada
+        switch (resultado) {
+            case GANAS:
+            System.out.println("¡Enhorabuena! Tu " + JUEGO[eleccionUsuario] + " gana a " + JUEGO[elecionPC]);
+            break;
+            case PIERDES:
+            System.out.println("¡Lo siento Tu " + JUEGO[eleccionUsuario] + " pierde ante " + JUEGO[elecionPC]);
+            break;
+            case EMPATE:
+            System.out.println("¡Empate a " + JUEGO[eleccionUsuario] + "!");
+            break;
+        }
+
         // Cerramos lo que abrimos
         s.close();
     }
