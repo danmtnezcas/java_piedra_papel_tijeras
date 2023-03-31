@@ -9,9 +9,12 @@ public class PiedraPepelTijeras {
 
     private static final String[] JUEGO = {PIEDRA, PAPEL, TIJERAS};
 
+    private static final int ERROR_NO_ENCONTRADA = -1;
+
     // Mensajes al usuario
     private static final String BIENVENIDA = "Bienvenido al juego Piedra-Papel-Tijeras";
     private static final String PEDIR_JUGADA = "¿Cuál es tu jugada? " + PIEDRA + " (piedra), " + PAPEL + " (papel), " + TIJERAS + " (tijeras) o " + SALIR + " (salir)";
+    private static final String MSJ_ERROR_NO_ENCONTRADA = "No entiendo tu jugada";
 
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
@@ -26,7 +29,22 @@ public class PiedraPepelTijeras {
         // Jugada del usuario
         String sEleccionUsuario = s.next();
 
+        // Interpretación de la jugada del usuario
+        int eleccionUsuario = convertir(sEleccionUsuario);
+        if (eleccionUsuario == ERROR_NO_ENCONTRADA) {
+            System.err.println(MSJ_ERROR_NO_ENCONTRADA);
+        }
+
         // Cerramos lo que abrimos
         s.close();
+    }
+
+    private static int convertir(String sEleccionUsuario) {
+        for (int i = 0; i < JUEGO.length; ++i) {
+            if (JUEGO[i].equalsIgnoreCase(sEleccionUsuario)) {
+                return i;
+            }
+        }
+        return ERROR_NO_ENCONTRADA;
     }
 }
