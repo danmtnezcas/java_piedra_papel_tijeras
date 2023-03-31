@@ -9,6 +9,10 @@ public class PiedraPepelTijeras {
 
     private static final String[] JUEGO = {PIEDRA, PAPEL, TIJERAS};
 
+    private static final int EMPATE = 0;
+    private static final int GANAS = 1;
+    private static final int PIERDES = 2;
+
     private static final int ERROR_NO_ENCONTRADA = -1;
 
     // Mensajes al usuario
@@ -35,6 +39,9 @@ public class PiedraPepelTijeras {
             System.err.println(MSJ_ERROR_NO_ENCONTRADA);
         }
 
+        // Calcular el ganador de la jugada
+        int resultado = usuarioGana(elecionPC, eleccionUsuario);
+
         // Cerramos lo que abrimos
         s.close();
     }
@@ -46,5 +53,13 @@ public class PiedraPepelTijeras {
             }
         }
         return ERROR_NO_ENCONTRADA;
+    }
+
+    private static int usuarioGana(int eleccionPC, int eleccionUsuario) {
+        int res = eleccionUsuario - eleccionPC;
+        if (res < 0) {
+            res += JUEGO.length;
+        }
+        return res;
     }
 }
