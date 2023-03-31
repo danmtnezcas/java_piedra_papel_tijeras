@@ -38,13 +38,15 @@ public class PiedraPepelTijeras {
             String sEleccionUsuario = s.next();
 
             if (sEleccionUsuario.equalsIgnoreCase(SALIR)) {
-                break;
+                break; // Si la opcion es S, cortamos el bucle para terminar
             }
 
             // Interpretación de la jugada del usuario
             int eleccionUsuario = convertir(sEleccionUsuario);
             if (eleccionUsuario == ERROR_NO_ENCONTRADA) {
                 System.err.println(MSJ_ERROR_NO_ENCONTRADA);
+                System.out.println(PEDIR_NUEVA_JUGADA);
+                continue; // Seguimos en el bucle, siguiente iteración
             }
 
             // Calcular el ganador de la jugada
@@ -56,7 +58,7 @@ public class PiedraPepelTijeras {
                 System.out.println("¡Enhorabuena! Tu " + JUEGO[eleccionUsuario] + " gana a " + JUEGO[elecionPC]);
                 break;
                 case PIERDES:
-                System.out.println("¡Lo siento Tu " + JUEGO[eleccionUsuario] + " pierde ante " + JUEGO[elecionPC]);
+                System.out.println("¡Lo siento! Tu " + JUEGO[eleccionUsuario] + " pierde ante " + JUEGO[elecionPC]);
                 break;
                 case EMPATE:
                 System.out.println("¡Empate a " + JUEGO[eleccionUsuario] + "!");
