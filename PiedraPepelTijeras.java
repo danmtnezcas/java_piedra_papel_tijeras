@@ -1,3 +1,4 @@
+import java.util.Scanner;
 
 public class PiedraPepelTijeras {
     // Constantes para las opciones disponibles
@@ -13,11 +14,19 @@ public class PiedraPepelTijeras {
     private static final String PEDIR_JUGADA = "¿Cuál es tu jugada? " + PIEDRA + " (piedra), " + PAPEL + " (papel), " + TIJERAS + " (tijeras) o " + SALIR + " (salir)";
 
     public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+
         // Instrucciones
         System.out.println(BIENVENIDA);
         System.out.println(PEDIR_JUGADA);
         
         // Jugada del ordenador
         int elecionPC = (int) (Math.random() * JUEGO.length);
+
+        // Jugada del usuario
+        String sEleccionUsuario = s.next();
+
+        // Cerramos lo que abrimos
+        s.close();
     }
 }
